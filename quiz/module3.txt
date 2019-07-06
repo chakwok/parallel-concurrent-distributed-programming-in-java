@@ -1,0 +1,49 @@
+c
+x[0] = x[0] + y[0];
+forall (i : [0 : N-1]) {
+  y[i+1] = w[i] + z[i];
+  x[i+1] = x[i+1] + y[i+1];
+}
+y[N+1] = w[N] + z[N];
+
+2
+C. The parallel code exhibits functional and structural determinism, and no data races.
+
+3
+C. Version 1 and Version 2 will perform the same total number of multiply operations (from line 5 in version 1, and line 6 in version 2)
+
+4. f
+
+5. C
+Hello from iteration 1
+
+Hello from iteration 0
+
+Continuing iteration 1
+
+Continuing iteration 0
+
+Finishing iteration 0
+
+Finishing iteration 1
+
+6.A
+forall (0, 3, (i) -> {
+  sum[i] = i;
+  barrier;
+  sum[i] += sum[i + 1];
+});
+
+7
+B. Fewer tasks had to be created when we made use of barriers, leading to lower overhead
+
+
+8
+D. Loop chunking does not affect the amount of work performed by the parallel loop and reduces the number of tasks created.
+
+
+9
+D. All of the parallel snippets are correct.
+
+10
+A. The number of chunks should be similar to the number of hardware cores in the platform.
